@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Travel Expense & Distance Calculator"
+description = "A responsive travel planning tool that estimates distance, time, and complete trip costs across car, bus, train, flight, taxi, and bike options for students, families, and everyday travellers."
+version = "1.0.0"
+id = "artifacts/travel-expense-calculator"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24592
+
+[services.development]
+run = "pnpm --filter @workspace/travel-expense-calculator run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/travel-expense-calculator", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/travel-expense-calculator/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24592"
+BASE_PATH = "/"

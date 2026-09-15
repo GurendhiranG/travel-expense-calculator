@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --color-primary: #ef9d5c;
+  --color-secondary: #80c9ac;
+  --color-accent: #e46e5c;
+  --color-bg-light: #f7f1e7;
+  --color-bg-dark: #102f35;
+  --color-bg-muted: #dcebe1;
+  --color-text-primary: #17383d;
+  --color-text-secondary: #a7c3bc;
+  --color-text-muted: #6b8a84;
+  --color-text-inverse: #f7f1e7;
+  --color-success: #80c9ac;
+  --color-warning: #ef9d5c;
+  --color-error: #e46e5c;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Manrope', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-bg-light: var(--color-bg-light);
+  --color-bg-dark: var(--color-bg-dark);
+  --color-bg-muted: var(--color-bg-muted);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-inverse: var(--color-text-inverse);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { width: 100%; height: 100%; margin: 0; }
+body {
+  overflow: hidden;
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+button { font: inherit; }
+.video-shell { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .045;
+  z-index: 20;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+.route-dash { stroke-dasharray: 1.2 2.2; animation: routeDash 8s linear infinite; }
+@keyframes routeDash { to { stroke-dashoffset: -30; } }
+.map-lines {
+  background-image: linear-gradient(115deg, transparent 0 48%, rgba(128,201,172,.14) 48.5% 49%, transparent 49.5% 100%), linear-gradient(30deg, transparent 0 73%, rgba(239,157,92,.1) 73.5% 74%, transparent 74.5% 100%);
+  background-size: 23vw 16vw, 18vw 13vw;
+}
